@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<br><br><br><br><br>
+<style>
+    .main {   
+        top: 80px;
+        left: 110px;
+        width: 550px;
+        background-color: rgb(187, 183, 183); /* Background color added here */
+        border-radius: 15px;
+        align-items: center;
+        height: 72vh;
+        padding: 20px;
+    }
+
+    h1 {
+        font-family: Times New Roman;
+        margin: 20px, 0;
+        color: #F6465B;
+        font-size: 30px;
+        font-weight: bold;
+        animation-delay: 3.5s;
+    }
+
+    input[type=submit], .btn-back {
+        background-color: #FFA500;
+        border: 2px;
+        color: white;
+        padding: 10px 16px;
+        cursor: pointer;
+        margin-top: 15px;
+        border-radius: 10px;
+        text-decoration: none; /* Remove underline */
+    }
+
+    input[type=submit]:hover, .btn-back:hover {
+        background-color: darkorange;
+    }
+
+    input {
+        padding: 20px, 0;
+        margin: 20px, 0;
+    }
+
+    p {
+        color: #ffffff;
+    }
+
+    .row em {
+        color: #BF0A30;
+    }
+
+    .btn-back {
+        background-color: blue;
+        color: white;
+        margin-left: 10px;
+        font-size: 16px; /* Match size with predict button */
+    }
+</style>
+
+<center>
+    <div class="container">
+        <div class="main">
+            <h1 class="text-dark">Diabetes disease Predictor</h1>
+            <hr>
+            <form method="get" action="{% url 'result' %}">
+                <table>
+                    <tr>
+                        <td align="right">Pregnancies:</td>
+                        <td align="left"><input type="text" name="n1" required></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Glucose:</td>
+                        <td align="left"><input type="text" name="n2" required></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Blood Pressure:</td>
+                        <td align="left"><input type="text" name="n3" required></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Skin Thickness:</td>
+                        <td align="left"><input type="text" name="n4" required></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Insulin:</td>
+                        <td align="left"><input type="text" name="n5" required></td>
+                    </tr>
+                    <tr>
+                        <td align="right">BMI:</td>
+                        <td align="left"><input type="text" name="n6" required></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Diabetes Padigree Function:</td>
+                        <td align="left"><input type="text" name="n7" required></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Age:</td>
+                        <td align="left"><input type="text" name="n8" required></td>
+                    </tr>
+                </table>
+                <input type="submit" value="PREDICT">
+                <a href="{% url 'home' %}" class="btn-back">Back</a>
+            </form>
+
+            <div class="row">
+                <h2><em>{{result2}}</em></h2>
+            </div>
+        </div>
+    </div>
+</center>
+{% endblock %}

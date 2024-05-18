@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<br><br><br><br><br>
+
+<style>
+    .ok{
+        color: green;
+        font-size: 50px;
+    }
+    body {
+        background-image: url('{% static "images/b3.jpg" %}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom;
+        background-attachment: fixed;
+        overflow: auto;
+    }
+    .col-md-4 {
+        margin: auto;
+        max-width: 30rem;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .form-box {
+        background: rgb(187, 183, 183);
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .btn-submit {
+        background-color: green;
+        color: white;
+        display: block;
+        width: 100%;
+        border: none;
+        padding: 15px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+    .btn-submit:hover {
+        background-color: darkgreen;
+    }
+    .btn-back {
+        background-color: blue;
+        color: white;
+        display: block;
+        width: 100%;
+        border: none;
+        padding: 15px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container">
+    <div class="display-4 my-2 text-center" style="margin-bottom: 30px;">
+        <h1>Heart Disease Prediction</h1>
+    </div>
+    <hr />
+    {% if context %}
+    <div class="h1 my-2 text-center">
+        You {{ context }} heart disease.
+    </div>
+    {% endif %}
+
+    <div class="col-md-4">
+        <div class="form-box">
+            <form class="" method="POST" action="{% url 'heart' %}">
+                {% csrf_token %}
+                {{ form }}
+                <div class="mt-4">
+                    <button type="submit" class="btn-lg btn-block btn btn-submit mb-3">
+                        Submit
+                    </button>
+                    <a href="{% url 'home' %}" class="btn-lg btn-block btn btn-back">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

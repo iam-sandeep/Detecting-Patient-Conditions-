@@ -1,0 +1,130 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DPS | Predict your disease</title>
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="{% static 'css/all.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles -->
+  <style>
+    .navbar-custom {
+      background-color: #212529;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      height: 70px;
+    }
+
+    .navbar-custom .navbar-brand,
+    .navbar-custom .nav-link {
+      color: #ffffff;
+    }
+
+    .navbar-custom .nav-link:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .navbar-custom .btn-success {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .navbar-custom .btn-success:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .navbar-custom .btn-link {
+      color: #ffffff;
+    }
+
+    .navbar-custom .btn-link:hover {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+    }
+
+    /* Added styles */
+    .navbar-nav .nav-item {
+      margin-right: 10px; /* Adjust margin between items */
+    }
+
+    .navbar-nav .profile-link {
+      margin-top: 6px; /* Margin profile link down */
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-white navbar-custom fixed-top">
+    <!-- Container wrapper -->
+    <div class="container">
+      <a class="navbar-brand me-2" href="{% url 'home'%}">
+        <img src="{% static 'logo/TeamLogo.png' %}" height="60" alt="MDB Logo" loading="lazy"
+          style="margin-top: -1px; border-radius: 50%;" />
+      </a>
+
+      <!-- Toggle button -->
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarButtonsExample"
+        aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarButtonsExample">
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home'%}"><h3> Disease Prediction </h3></a>
+          </li>
+        </ul>
+        <!-- Left links -->
+
+        <!-- Right links -->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item profile-link">
+            <a class="nav-link" style="color: white;" href="/profile">
+              Profile
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: white;" href="/logout">
+              {{ request.user.username }}
+              <button type="button" class="btn btn-success">Logout</button>
+            </a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/login">
+              <button type="button" class="btn btn-success">Login</button>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'signup' %}">
+              <button type="button" class="btn btn-link">Sign up for free</button>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+        <!-- Right links -->
+      </div>
+      <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <!-- Font Awesome -->
+  <script src="{% static 'js/all.min.js' %}"></script>
+</body>
+
+</html>

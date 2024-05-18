@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<br>
+<br>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+    .center-box {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+    .profile-info {
+        font-size: 18px;
+    }
+    .bracket {
+        color: #8B4513;
+    }
+    .result {
+        background-color: lightgreen;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    .home-button {
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container mt-5 center-box">
+    <h2 class="text-center">User Profile</h2>
+    <hr>
+    <div class="profile-info">
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>Disease Name</h4>
+                <p class="result">Heart Prediction</p>
+            </div>
+            <div class="col-sm-6">
+                <h4 class="text-right">Result</h4>
+                {% block heart %}  
+                {% if heart %}
+                <p class="text-right result">Oops! You have Heart Disease.</p>
+                {% elif heart == 0 %}
+                <p class="text-right result">You haven't tried to predict yet.</p>
+                {% else %}
+                <p class="text-right result">Congratulations! You Don't have Heart Disease.</p>
+                {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>Disease Name</h4>
+                <p class="result">Cancer Prediction</p>
+            </div>
+            <div class="col-sm-6">
+                <h4 class="text-right">Result</h4>
+                {% block cancer %}  
+                {% if cancer %}
+                <p class="text-right result">Oops! You have Cancer.</p>
+                {% elif cancer == 0 %}
+                <p class="text-right result">You haven't tried to predict yet.</p>
+                {% else %}
+                <p class="text-right result">Congratulations! You Don't have Cancer.</p>
+                {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>Disease Name</h4>
+                <p class="result">Diabetes Prediction</p>
+            </div>
+            <div class="col-sm-6">
+                <h4 class="text-right">Result</h4>
+                {% block diabities %}  
+                {% if diabities %}
+                <p class="text-right result">Algorithm in progress.</p>
+                {% elif diabities == 0 %}
+                <p class="text-right result">Algorithm in progress.</p>
+                {% else %}
+                <p class="text-right result">Algorithm in progress.</p>
+                {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="text-center mt-3">
+         <a href="{% url 'home' %}" class="btn btn-primary">Home</a> 
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+Install virtual environment
+pip install virtualenv
+
+create virtual environment
+virtualenv --python=python3.12 venv 
+
+install this libratry
+pip install django
+pip install pandas
+pip install matplotlib
+pip install seaborn
+pip install scikit-learn 
+pip install xhtml2pdf
+pip install makemigrations
+python manage.py migrate
+python manage.py runserver
+
+
+if virtual environment is not activate then run command
+.\venv\Scripts\activate
