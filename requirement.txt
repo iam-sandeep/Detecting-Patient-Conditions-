@@ -17,4 +17,4 @@ python manage.py runserver
 
 
 if virtual environment is not activate then run command
-.\venv\Scripts\activate
+.\venv\Scripts\activate\
